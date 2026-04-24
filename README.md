@@ -7,7 +7,7 @@ A deep learning project for detecting and classifying road damage such as cracks
 ## Team Members
 
 - Rohit Rajashekar Aradhya
-- Sonika K V
+- Sonika Kizhakepurath Vinod
 
 ---
 
