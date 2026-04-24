@@ -1,118 +1,158 @@
-# 🚧 Road Damage Detection using YOLOv8
+# Road Damage Detection using YOLOv8
 
-This project focuses on detecting and classifying different types of road damage using deep learning (YOLOv8). The system analyzes road images and identifies defects such as cracks and potholes.
-
----
-
-## 👥 Team Members
-- Rohit Rajashekar Aradhya  
-- Sonika K V  
+A deep learning project for detecting and classifying road damage such as cracks and potholes using YOLOv8.
 
 ---
 
-## 📌 Project Overview
+## Team Members
+
+- Rohit Rajashekar Aradhya
+- Sonika K V
+
+---
+
+## Project Overview
 
 The project is divided into three levels:
 
-- **Level 1:** Binary classification (Pothole vs No Pothole)  
-- **Level 2:** Multi-class detection  
-  - Longitudinal Crack  
-  - Transverse Crack  
-  - Alligator Crack  
-  - Pothole  
-- **Level 3 (Extra Credit):** Improved model with tuning and higher precision  
+| Level | Description |
+|-------|-------------|
+| Level 1 | Binary classification — Pothole vs. No Pothole |
+| Level 2 | Multi-class detection — Longitudinal Crack, Transverse Crack, Alligator Crack, Pothole |
+| Level 3 | Improved model with better tuning and higher precision (Extra Credit) |
 
 ---
 
-## 📂 Project Structure
+## Project Structure
 
-
-configs/ → Dataset configuration files (YAML)
-main/ → Main scripts (training, prediction)
-preprocess/ → Data preprocessing scripts
-train/ → Training scripts for different levels
-validate/ → Validation scripts
-test/ → Testing scripts
-models/ → Trained YOLO models (.pt files)
-results/ → Output results, predictions, logs
-
+```
+Road_Damage_Detection_Proj/
+├── configs/        # Dataset configuration files (YAML)
+├── main/           # Main scripts (training, prediction)
+├── preprocess/     # Data preprocessing scripts
+├── train/          # Training scripts for each level
+├── validate/       # Validation scripts
+├── test/           # Testing scripts
+├── models/         # Trained YOLO model weights (.pt files)
+└── results/        # Predictions, logs, and output results
+```
 
 ---
 
-## ⚙️ Setup Instructions
+## Setup Instructions
 
-### 1. Clone the repository
+### 1. Clone the Repository
+
 ```bash
 git clone https://github.com/RohitAradhya247/Road_Damage_Detection_Proj.git
 cd Road_Damage_Detection_Proj
-2. Create and activate virtual environment
+```
+
+### 2. Create and Activate a Virtual Environment
+
+```bash
 python -m venv venv
-source venv/bin/activate   # Mac/Linux
-3. Install dependencies
+source venv/bin/activate       # macOS/Linux
+venv\Scripts\activate          # Windows
+```
+
+### 3. Install Dependencies
+
+```bash
 pip install ultralytics
 pip install opencv-python matplotlib
-📊 Dataset
-Dataset used: RDD2022 (Road Damage Dataset)
-Contains real-world road images from multiple countries
-Dataset is not included in this repository due to large size
+```
 
-👉 Place dataset in the correct directory before running
+---
 
-🔄 Preprocessing
+## Dataset
 
-Run the following scripts:
+- Dataset used: [RDD2022 — Road Damage Dataset](https://github.com/sekilab/RoadDamageDetector)
+- Contains real-world road images from multiple countries
+- Dataset is not included in this repo due to large file size — download it separately and update the paths in the YAML config files before running anything
 
+---
+
+## Preprocessing
+
+```bash
 python preprocess/convert.py
 python preprocess/remove_duplicates.py
 python preprocess/split_dataset.py
-🧠 Training
-Level 1 (Binary Model)
+```
+
+---
+
+## Training
+
+### Level 1 — Binary Classification
+
+```bash
 python train/train.py
-Level 2 (Multi-class Model)
+```
+
+### Level 2 — Multi-class Detection
+
+```bash
 yolo detect train model=yolov8n.pt data=configs/data_fixed.yaml epochs=10
-Level 3 (Improved Model)
+```
+
+### Level 3 — Improved Model (Extra Credit)
+
+```bash
 python train/train_level3.py
-📈 Validation
-Standard validation
+```
+
+---
+
+## Validation
+
+### Standard
+
+```bash
 yolo val model=models/best.pt data=configs/dataset.yaml
-Level 3 validation
+```
+
+### Level 3
+
+```bash
 python validate/validate_level3.py
-🔍 Prediction
+```
+
+---
+
+## Prediction
+
+```bash
 python main/predict.py
+```
 
-Results will be saved in:
+Output is saved to `results/`.
 
-results/
-📊 Results Summary
-Level	Description	Outcome
-Level 1	Binary detection	Good baseline
-Level 2	Multi-class detection	Moderate accuracy
-Level 3	Improved model	Better precision and performance
-Level 3 Improvements:
-Better hyperparameter tuning
-Improved class balance
-Fine-tuning for pothole detection
-Higher mAP and recall
-🚀 Extra Credit (Level 3)
+---
 
-Level 3 focuses on improving performance over Level 2 by:
+## Results Summary
 
-Enhancing model precision
-Optimizing training parameters
-Improving detection quality
+| Level | Description | Outcome |
+|-------|-------------|---------|
+| Level 1 | Binary detection | Good baseline |
+| Level 2 | Multi-class detection | Moderate accuracy |
+| Level 3 | Improved model | Better mAP, precision and recall |
 
-This contributes to +10% extra credit in the course evaluation.
+Level 3 improvements include better hyperparameter tuning, improved class balance, and fine-tuning focused on pothole detection. This contributes +10% extra credit in the course evaluation.
 
-⚠️ Notes
-Dataset is not included in this repository
-Update dataset paths in YAML files before running
-Training on CPU is slow — GPU recommended
-📚 References
-Ultralytics YOLOv8 Documentation
-RDD2022 Dataset
-Course lecture materials
-✅ Final Outcome
-Built an end-to-end road damage detection system
-Implemented multi-level detection pipeline
-Improved performance using Level 3 enhancements
-Successfully structured and deployed the project
+---
+
+## Notes
+
+- Dataset is not included — download and set up paths manually
+- Update dataset paths in YAML files before running training
+- Training on CPU is very slow — GPU is recommended
+
+---
+
+## References
+
+- [Ultralytics YOLOv8 Documentation](https://docs.ultralytics.com)
+- [RDD2022 Road Damage Dataset](https://github.com/sekilab/RoadDamageDetector)
+- Course lecture materials (EECE 5639 — Computer Vision, Northeastern University)
