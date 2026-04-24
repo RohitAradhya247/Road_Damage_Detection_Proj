@@ -1,0 +1,10 @@
+path: /Users/rohitaradhya/road_damage_project
+
+train: pothole_dataset/train/images
+val: pothole_dataset/valid/images
+
+names:
+  0: longitudinal_crack
+  1: transverse_crack
+  2: alligator_crack
+  3: pothole
