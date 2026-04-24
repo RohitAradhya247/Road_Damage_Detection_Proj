@@ -139,7 +139,7 @@ Output is saved to `results/`.
 | Level 2 | Multi-class detection | Moderate accuracy |
 | Level 3 | Improved model | Better mAP, precision and recall |
 
-Level 3 improvements include better hyperparameter tuning, improved class balance, and fine-tuning focused on pothole detection. This contributes +10% extra credit in the course evaluation.
+Level 3 improvements include better hyperparameter tuning, improved class balance, and fine-tuning focused on pothole detection.
 
 ---
 
